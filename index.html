@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>4rd</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
     body {
-      margin: 0;
+      margin: 25;
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -15,6 +17,13 @@
       background: linear-gradient(135deg, #ffefba, #ffffff);
       font-family: Arial, sans-serif;
       color: black;
+      text-align: center;
+    }
+
+    .progress-bar {
+      margin: 30px auto 0 auto; /* top 30px, bottom 0, centered */
+      min-width: 100px;
+      max-width: 400px;
       text-align: center;
     }
 
@@ -36,6 +45,25 @@
   <audio autoplay loop>
     <source src="download-made-with-Voicemod.mp3" type="audio/mpeg">
   </audio>
+
+  <div class="w3-light-grey w3-round-large progress-bar">
+  <div class="w3-container w3-orange w3-round-large" style="width:25%">Hunger</div>
+  </div>
+  <div class="w3-light-grey w3-round-large progress-bar">
+  <div class="w3-container w3-orange w3-round-large" style="width:25%">Energy</div>
+  </div>
+  <div class="w3-light-grey w3-round-large progress-bar">
+  <div class="w3-container w3-orange w3-round-large" style="width:25%">Slay</div>
+  </div>
   
+  <script>
+    const audio = document.getElementById('bg-music');
+    const button = document.getElementById('play-btn');
+
+    button.addEventListener('click', () => {
+      audio.play();
+      button.style.display = 'none'; // hide the button after click
+    });
+
 </body>
 </html>
