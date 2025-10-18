@@ -12,9 +12,12 @@
     body{
       margin: 0;
       height: 100vh;
-       /*background-image: linear-gradient(to top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
-    }*/
-      background-color: #394d27;
+      background-image: linear-gradient(to bottom right, #F9FFFD, #A8C64E);
+      /*background-image: url(retro-seamless-pattern-in-the-style-of-the-70s-and-60s-vector.jpg);*/
+      background-size: 100%;
+      background-repeat: repeat;
+    }
+      /*background-color: #b4c7a5;*/
 
     .progress-bar {
       margin: 30px auto 0 auto; /* top 30px, bottom 0, centered */
@@ -28,8 +31,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 400px; /* Adjust as needed */
-      opacity: 0.75; /* Controls transparency */
+      width: 800px; /* Adjust as needed */
+      opacity: 0.05; /* Controls transparency */
       pointer-events: none; /* Clicks pass through the image */
       z-index: -1;
     }
@@ -49,44 +52,95 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 200px; /* Adjust size as needed */
+      width: 300px; /* Adjust size as needed */
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      /*box-shadow:  -2px -2px 0 #d2d4d2, 2px 2px 0 #29381c;*/
       
     }
 
-    .button-row {
-      display: flex;
-      justify-content: center;     /* center horizontally */
-      align-items: center;         /* center vertically */
-      gap: 40px;                   /* space between buttons */
-      margin-top: 250px;           /* move the whole row down */
-      flex-wrap: wrap;             /* allows wrapping on smaller screens */
+    .vintage-bar {
+      margin: 30px auto 0 auto; /* top 30px, bottom 0, centered */
+      min-width: 100px;
+      max-width: 500px;
+      text-align: center;
+      color: white;
+      width: 300px;
+      height: 25px;
+      background-color: #394d27;
+      border: 2px solid #909190;
+      border-radius: 8px;
+      box-shadow: inset -2px -2px 0 #d2d4d2, inset 2px 2px 0 #29381c;
+      padding: 4px;
+      position: relative;
+      /*overflow: hidden;*/
+      z-index: 5;
+    }
+
+    .vintage-fill {
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        #1f1d1d 0 10px,
+        #394d27 6px 15px
+      );
+      border-top-left-radius: 5px;
+      animation: drain 10s linear forwards;
+      /*border-bottom-left-radius: 6px;*/
+      /*animation: blink-fill 1.5s steps(2, start) infinite;*/
+    }
+
+    .text{
+      position: absolute;
+      text-align: center;
+      color: white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
     
+    .container {
+      display: grid;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: 200px;
+      transform: translate(-50%, -50%);
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      padding: 10px;
+      /*z-index: 5;*/
+      font-size: 30px;
+      text-align: center;
+    }
+
+    /* swapped positions */
+    .pos-1 { grid-column: 1; grid-row: 1; }
+    .pos-2 { grid-column: 2; grid-row: 2; }
+    .pos-3 { grid-column: 4; grid-row: 2; }
+    .pos-4 { grid-column: 5; grid-row: 1; }
+
     button {
       all: unset;
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      margin-top: 200px;
-      border-radius: 999vw;
+      /*position: absolute;*/
+      /*transform: translate(-50%, -50%);*/
+      margin-top: 20px;
+      margin-left: 30px;
+      margin-right: 30px;
+      border-radius: 100em;
       background-color: rgba(0, 0, 0, 0.75);
       box-shadow: -0.15em -0.15em 0.15em -0.15em rgba(5, 5, 5, 0.25),
           0.0375em 0.0375em 0.0375em 0 rgba(5, 5, 5, 0.1);
-    }
 
+    }
     button::after {
         content: "";
-        position: absolute;
+        position: relative;
         z-index: 0;
-        width: calc(100% + 0.3em);
-        height: calc(100% + 0.3em);
+        width: calc(50% + 0.3em);
+        height: calc(50% + 0.3em);
         top: -0.15em;
         left: -0.15em;
         border-radius: inherit;
@@ -97,6 +151,12 @@
         filter: blur(0.0125em);
         opacity: 0.25;
         mix-blend-mode: multiply;
+    }
+    .button:hover .button-outer {
+      box-shadow:
+        0 0 0 0 rgba(5, 5, 5, 1),
+        0 0 0 0 rgba(5, 5, 5, 0.5),
+        0 0 0 0 rgba(5, 5, 5, 0.25);
     }
 
     button .button-outer {
@@ -110,17 +170,13 @@
             0.15em 0.3em 0.1em -0.01em rgba(5, 5, 5, 0.25);
     }
 
-    button:hover .button-outer {
-        box-shadow: 0 0 0 0 rgba(5, 5, 5, 1), 0 0 0 0 rgba(5, 5, 5, 0.5),
-            0 0 0 0 rgba(5, 5, 5, 0.25);
-    }
-
     .button-inner {
+    
         --inset: 0.035em;
         position: relative;
         z-index: 1;
         border-radius: inherit;
-        padding: 2.5em 1.5em;
+        padding: 1.5em 1.5em;
         background-image: linear-gradient(135deg,
                 rgba(230, 230, 230, 1),
                 rgba(180, 180, 180, 1));
@@ -145,7 +201,6 @@
             /* 7 */
             -0.075em -0.25em 0.25em 0.1em inset rgba(5, 5, 5, 0.25);
     }
-
     button:hover .button-inner {
         clip-path: inset(clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 999vw);
         box-shadow:
@@ -164,11 +219,12 @@
             /* 7 */
             -0.075em -0.12em 0.2em 0.1em inset rgba(5, 5, 5, 0.25);
     }
-
     button .button-inner span {
+      width: 60px;
+      height: 60px;
         position: relative;
         z-index: 4;
-        font-family: "Inter", sans-serif;
+        font-family: "Comic Sans MS", sans-serif;
         letter-spacing: -0.05em;
         font-weight: 500;
         color: rgba(0, 0, 0, 0);
@@ -186,7 +242,6 @@
         -ms-user-select: none;
         user-select: none;
     }
-
     button:hover .button-inner span {
         transform: scale(0.975);
     }
@@ -194,39 +249,6 @@
     button:active .button-inner {
         transform: scale(0.975);
     }
-
-
-    .vintage-bar {
-      margin: 30px auto 0 auto; /* top 30px, bottom 0, centered */
-      min-width: 100px;
-      max-width: 500px;
-      text-align: center;
-      color: white;
-      width: 300px;
-      height: 25px;
-      background-color: #394d27;
-      border: 2px solid #444;
-      border-radius: 8px;
-      box-shadow: inset -2px -2px 0 #fff, inset 2px 2px 0 #888;
-      padding: 4px;
-      position: relative;
-      /*overflow: hidden;*/
-      z-index: 5;
-    }
-
-    .vintage-fill {
-      height: 100%;
-      background: repeating-linear-gradient(
-        90deg,
-        #1f1d1d 0 10px,
-        #394d27 6px 15px
-      );
-      border-top-left-radius: 5px;
-      animation: drain 10s linear forwards;
-      /*border-bottom-left-radius: 6px;*/
-      /*animation: blink-fill 1.5s steps(2, start) infinite;*/
-    }
-        
   </style>
 </head>
 <body>
@@ -237,72 +259,159 @@
   <audio autoplay loop>
     <source src="download-made-with-Voicemod.mp3" type="audio/mpeg">
   </audio>
-
   <div class="vintage-bar">
-  <div class="vintage-fill" id="fillBar" style="width: 0%;">0%</div>
+  <div class="vintage-fill" id="fillBarHunger" style="width: 0%;">Hunger</div>
   </div>
   <div class="vintage-bar">
-  <div class="vintage-fill" style="width: 100%;">aaaaaa</div>
+  <div class="vintage-fill" id="fillBarEnergy" style="width: 0%;">Energy</div>
   </div>
   <div class="vintage-bar">
-  <div class="vintage-fill" style="width: 100%;">aaaaaa</div>
+  <div class="vintage-fill" id="fillBarMood" style="width: 0%;">Mood</div>
+  </div>
+  <div class="vintage-bar">
+  <div class="vintage-fill" id="fillBarSeberazvitie" style="width: 0%;">Себеразвитие</div>
   </div>
   
   <img src="rat-eats-mm-rat.gif" alt="Example Image" class="a">
 
-  <div class="button-row">
-  <button onclick="increaseBar()">
-    <div class="button-outer">
-      <div class="button-inner">
-        <span>1</span>
-      </div>
-    </div>
-  </button>
+  <div class="container">
+    <button class="pos-1" onclick="increaseBarHunger()">
+      <div class="button-outer"><div class="button-inner"><span>Eat</span></div></div>
+    </button>
+
+    <button class="pos-2" onclick="increaseBarEnergy()">
+      <div class="button-outer"><div class="button-inner"><span>Sleep</span></div></div>
+    </button>
+
+    <button class="pos-3" onclick="increaseBarMood()">
+      <div class="button-outer"><div class="button-inner"><span>Work</span></div></div>
+    </button>
+
+    <button class="pos-4" onclick="increaseBarSeberazvitie()">
+      <div class="button-outer"><div class="button-inner"><span>Slay</span></div></div>
+    </button>
   </div>
 
 
 
   <script>
-    let counter = 0;
-    let timer = null;
+    let counterHunger = 0;
+    let counterEnergy = 0;
+    let counterMood = 0;
+    let counterSeberazvitie = 0;
+    let timer1 = null;
+    let timer2 = null;
+    let timer3 = null;
+    let timer4 = null;
 
-    const audio = document.getElementById('bg-music');
-    const button = document.getElementById('play-btn');
-
-    button.addEventListener('click', () => {
-      audio.play();
-      button.style.display = 'none'; // hide the button after click
-    });
-    function increaseBar() {
-        if (counter < 100) counter += 10; // increase by 10%
-        if (counter >= 100) startDecreasing();
+    function increaseBarHunger() {
+        if (counterHunger < 100) counterHunger += 10; // increase by 10%
+        startDecreasingHunger();
+        updateBar();
+      }
+    function increaseBarEnergy() {
+        if (counterEnergy < 100) counterEnergy += 10; // increase by 10%
+        startDecreasingEnergy();
+        updateBar();
+      }
+    function increaseBarMood() {
+        if (counterMood < 100) counterMood += 10; // increase by 10%
+        startDecreasingMood();
+        updateBar();
+      }
+    function increaseBarSeberazvitie() {
+        if (counterSeberazvitie < 100) counterSeberazvitie += 10; // increase by 10%
+        startDecreasingSeberazvitie();
         updateBar();
       }
 
-    function decreaseBar() {
-      if (counter > 0) counter -= 10; // decrease by 10%
+    function decreaseBarHunger() {
+      if (counterHunger > 0) counterHunger -= 10; // decrease by 10%
+      updateBar();
+    }
+    function decreaseBarEnergy() {
+      if (counterEnergy > 0) counterEnergy -= 10; // decrease by 10%
+      updateBar();
+    }
+    function decreaseBarMood() {
+      if (counterMood > 0) counterMood -= 10; // decrease by 10%
+      updateBar();
+    }
+    function decreaseBarSeberazvitie() {
+      if (counterSeberazvitie > 0) counterSeberazvitie -= 10; // decrease by 10%
       updateBar();
     }
 
     function updateBar() {
-      const bar = document.getElementById("fillBar");
-      bar.style.width = counter + "%";   // set the width dynamically
-      bar.textContent = counter + "%";   // update text inside
+      const bar1 = document.getElementById("fillBarHunger");
+      bar1.style.width = counterHunger + "%";   // set the width dynamically
+      //bar.textContent = counter + "%";   // update text inside
+      const bar2 = document.getElementById("fillBarEnergy");
+      bar2.style.width = counterEnergy + "%";   // set the width dynamically
+      //bar.textContent = counter + "%";   // update text inside
+      const bar3 = document.getElementById("fillBarMood");
+      bar3.style.width = counterMood + "%";   // set the width dynamically
+      //bar.textContent = counter + "%";   // update text inside
+      const bar4 = document.getElementById("fillBarSeberazvitie");
+      bar4.style.width = counterSeberazvitie + "%";   // set the width dynamically
+      //bar.textContent = counter + "%";   // update text inside
     }
 
-    function startDecreasing() {
+    function startDecreasingHunger() {
 
-      if (timer) return; // don’t start multiple timers
-      timer = setInterval(() => {
+      if (timer1) return; // don’t start multiple timers
+      timer1 = setInterval(() => {
 
-        if (counter > 0) {
-          counter -= 10; // decrease slowly
+        if (counterHunger > 0) {
+          counterHunger -= 10; // decrease slowly
           updateBar();
         } else {
-          clearInterval(timer); // stop when reaches 0
-          timer = null;
+          clearInterval(timer1); // stop when reaches 0
+          timer1 = null;
         }
-      }, 1000); // decrease every 1 second
+      }, 5000); // decrease every 3 seconds
+    }
+    function startDecreasingEnergy() {
+
+      if (timer2) return; // don’t start multiple timers
+      timer2 = setInterval(() => {
+
+        if (counterEnergy > 0) {
+          counterEnergy -= 10; // decrease slowly
+          updateBar();
+        } else {
+          clearInterval(timer2); // stop when reaches 0
+          timer2 = null;
+        }
+      }, 5000); // decrease every 3 seconds
+    }
+    function startDecreasingMood() {
+
+      if (timer3) return; // don’t start multiple timers
+      timer3 = setInterval(() => {
+
+        if (counterMood > 0) {
+          counterMood -= 10; // decrease slowly
+          updateBar();
+        } else {
+          clearInterval(timer3); // stop when reaches 0
+          timer3 = null;
+        }
+      }, 5000); // decrease every 3 seconds
+    }
+    function startDecreasingSeberazvitie() {
+
+      if (timer4) return; // don’t start multiple timers
+      timer4 = setInterval(() => {
+
+        if (counterSeberazvitie > 0) {
+          counterSeberazvitie -= 10; // decrease slowly
+          updateBar();
+        } else {
+          clearInterval(timer4); // stop when reaches 0
+          timer4 = null;
+        }
+      }, 5000); // decrease every 3 seconds
     }
   </script>
 
