@@ -6,19 +6,15 @@
 
   <title>4rd</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href='https://fonts.googleapis.com/css?family=Faster One' rel='stylesheet'>
   <style>
-    body {
-      margin: 25;
+
+    body{
+      margin: 0;
       height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ffefba, #ffffff);
-      font-family: Arial, sans-serif;
-      color: black;
-      text-align: center;
-    }
+       /*background-image: linear-gradient(to top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    }*/
+      background-color: #394d27;
 
     .progress-bar {
       margin: 30px auto 0 auto; /* top 30px, bottom 0, centered */
@@ -27,36 +23,249 @@
       text-align: center;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+    .background-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px; /* Adjust as needed */
+      opacity: 0.75; /* Controls transparency */
+      pointer-events: none; /* Clicks pass through the image */
+      z-index: -1;
     }
 
-    img {
+    h1 {
+      font-size: 5rem;
+      margin-bottom: 20px;
+      margin-top: 5px;
+      text-align: center;
+      font-family: Faster One, sans-serif;
+      color: black;
+    }
+
+    .a {
+      display: block; /* pravi go kato block?? */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 200px; /* Adjust size as needed */
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      
     }
+
+    .button-row {
+      display: flex;
+      justify-content: center;     /* center horizontally */
+      align-items: center;         /* center vertically */
+      gap: 40px;                   /* space between buttons */
+      margin-top: 250px;           /* move the whole row down */
+      flex-wrap: wrap;             /* allows wrapping on smaller screens */
+    }
+    
+    button {
+      all: unset;
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin-top: 200px;
+      border-radius: 999vw;
+      background-color: rgba(0, 0, 0, 0.75);
+      box-shadow: -0.15em -0.15em 0.15em -0.15em rgba(5, 5, 5, 0.25),
+          0.0375em 0.0375em 0.0375em 0 rgba(5, 5, 5, 0.1);
+    }
+
+    button::after {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        width: calc(100% + 0.3em);
+        height: calc(100% + 0.3em);
+        top: -0.15em;
+        left: -0.15em;
+        border-radius: inherit;
+        background: linear-gradient(-135deg,
+                rgba(5, 5, 5, 0.5),
+                transparent 20%,
+                transparent 100%);
+        filter: blur(0.0125em);
+        opacity: 0.25;
+        mix-blend-mode: multiply;
+    }
+
+    button .button-outer {
+        position: relative;
+        z-index: 1;
+        border-radius: inherit;
+        transition: box-shadow 300ms ease;
+        will-change: box-shadow;
+        box-shadow: 0 0.05em 0.05em -0.01em rgba(5, 5, 5, 1),
+            0 0.01em 0.01em -0.01em rgba(5, 5, 5, 0.5),
+            0.15em 0.3em 0.1em -0.01em rgba(5, 5, 5, 0.25);
+    }
+
+    button:hover .button-outer {
+        box-shadow: 0 0 0 0 rgba(5, 5, 5, 1), 0 0 0 0 rgba(5, 5, 5, 0.5),
+            0 0 0 0 rgba(5, 5, 5, 0.25);
+    }
+
+    .button-inner {
+        --inset: 0.035em;
+        position: relative;
+        z-index: 1;
+        border-radius: inherit;
+        padding: 2.5em 1.5em;
+        background-image: linear-gradient(135deg,
+                rgba(230, 230, 230, 1),
+                rgba(180, 180, 180, 1));
+        transition: box-shadow 300ms ease, clip-path 250ms ease,
+            background-image 250ms ease, transform 250ms ease;
+        will-change: box-shadow, clip-path, background-image, transform;
+        overflow: clip;
+        clip-path: inset(0 0 0 0 round 999vw);
+        box-shadow:
+            /* 1 */
+            0 0 0 0 inset rgba(5, 5, 5, 0.1),
+            /* 2 */
+            -0.05em -0.05em 0.05em 0 inset rgba(5, 5, 5, 0.25),
+            /* 3 */
+            0 0 0 0 inset rgba(5, 5, 5, 0.1),
+            /* 4 */
+            0 0 0.05em 0.2em inset rgba(255, 255, 255, 0.25),
+            /* 5 */
+            0.025em 0.05em 0.1em 0 inset rgba(255, 255, 255, 1),
+            /* 6 */
+            0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
+            /* 7 */
+            -0.075em -0.25em 0.25em 0.1em inset rgba(5, 5, 5, 0.25);
+    }
+
+    button:hover .button-inner {
+        clip-path: inset(clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 999vw);
+        box-shadow:
+            /* 1 */
+            0.1em 0.15em 0.05em 0 inset rgba(5, 5, 5, 0.75),
+            /* 2 */
+            -0.025em -0.03em 0.05em 0.025em inset rgba(5, 5, 5, 0.5),
+            /* 3 */
+            0.25em 0.25em 0.2em 0 inset rgba(5, 5, 5, 0.5),
+            /* 4 */
+            0 0 0.05em 0.5em inset rgba(255, 255, 255, 0.15),
+            /* 5 */
+            0 0 0 0 inset rgba(255, 255, 255, 1),
+            /* 6 */
+            0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
+            /* 7 */
+            -0.075em -0.12em 0.2em 0.1em inset rgba(5, 5, 5, 0.25);
+    }
+
+    button .button-inner span {
+        position: relative;
+        z-index: 4;
+        font-family: "Inter", sans-serif;
+        letter-spacing: -0.05em;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0);
+        background-image: linear-gradient(135deg,
+                rgba(25, 25, 25, 1),
+                rgba(75, 75, 75, 1));
+        -webkit-background-clip: text;
+        background-clip: text;
+        transition: transform 250ms ease;
+        display: block;
+        will-change: transform;
+        text-shadow: rgba(0, 0, 0, 0.1) 0 0 0.1em;
+        -webkit-user-select: none; 
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    button:hover .button-inner span {
+        transform: scale(0.975);
+    }
+
+    button:active .button-inner {
+        transform: scale(0.975);
+    }
+
+
+    .vintage-bar {
+      margin: 30px auto 0 auto; /* top 30px, bottom 0, centered */
+      min-width: 100px;
+      max-width: 500px;
+      text-align: center;
+      color: white;
+      width: 300px;
+      height: 25px;
+      background-color: #394d27;
+      border: 2px solid #444;
+      border-radius: 8px;
+      box-shadow: inset -2px -2px 0 #fff, inset 2px 2px 0 #888;
+      padding: 4px;
+      position: relative;
+      /*overflow: hidden;*/
+      z-index: 5;
+    }
+
+    .vintage-fill {
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        #1f1d1d 0 10px,
+        #394d27 6px 15px
+      );
+      border-top-left-radius: 5px;
+      animation: drain 10s linear forwards;
+      /*border-bottom-left-radius: 6px;*/
+      /*animation: blink-fill 1.5s steps(2, start) infinite;*/
+    }
+        
   </style>
 </head>
 <body>
+  <img src="pngtree-game-tamagotchi-vector-blue-png-image_6485049.png" alt="Overlay" class="background-overlay">
+
   <h1>4rd Ali</h1>
-  <img src="rat-eats-mm-rat.gif" alt="Example Image">
+  
   <audio autoplay loop>
     <source src="download-made-with-Voicemod.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="w3-light-grey w3-round-large progress-bar">
-  <div class="w3-container w3-orange w3-round-large" style="width:25%">Hunger</div>
+  <div class="vintage-bar">
+  <div class="vintage-fill" id="fillBar" style="width: 0%;">0%</div>
   </div>
-  <div class="w3-light-grey w3-round-large progress-bar">
-  <div class="w3-container w3-orange w3-round-large" style="width:25%">Energy</div>
+  <div class="vintage-bar">
+  <div class="vintage-fill" style="width: 100%;">aaaaaa</div>
   </div>
-  <div class="w3-light-grey w3-round-large progress-bar">
-  <div class="w3-container w3-orange w3-round-large" style="width:25%">Slay</div>
+  <div class="vintage-bar">
+  <div class="vintage-fill" style="width: 100%;">aaaaaa</div>
   </div>
   
+  <img src="rat-eats-mm-rat.gif" alt="Example Image" class="a">
+
+  <div class="button-row">
+  <button onclick="increaseBar()">
+    <div class="button-outer">
+      <div class="button-inner">
+        <span>1</span>
+      </div>
+    </div>
+  </button>
+  </div>
+
+
+
   <script>
+    let counter = 0;
+    let timer = null;
+
     const audio = document.getElementById('bg-music');
     const button = document.getElementById('play-btn');
 
@@ -64,6 +273,38 @@
       audio.play();
       button.style.display = 'none'; // hide the button after click
     });
+    function increaseBar() {
+        if (counter < 100) counter += 10; // increase by 10%
+        if (counter >= 100) startDecreasing();
+        updateBar();
+      }
+
+    function decreaseBar() {
+      if (counter > 0) counter -= 10; // decrease by 10%
+      updateBar();
+    }
+
+    function updateBar() {
+      const bar = document.getElementById("fillBar");
+      bar.style.width = counter + "%";   // set the width dynamically
+      bar.textContent = counter + "%";   // update text inside
+    }
+
+    function startDecreasing() {
+
+      if (timer) return; // don’t start multiple timers
+      timer = setInterval(() => {
+
+        if (counter > 0) {
+          counter -= 10; // decrease slowly
+          updateBar();
+        } else {
+          clearInterval(timer); // stop when reaches 0
+          timer = null;
+        }
+      }, 1000); // decrease every 1 second
+    }
+  </script>
 
 </body>
 </html>
