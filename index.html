@@ -7,24 +7,18 @@
   <title>4rd</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link href='https://fonts.googleapis.com/css?family=Faster One' rel='stylesheet'>
+  <link rel="stylesheet" href="mouse_button.css">
+  <link rel="stylesheet" href="cursor.css">
+  <link rel="stylesheet" href="krilata_fraza_popup.css">
   <style>
-
     body{
       margin: 0;
       height: 100vh;
-      background-image: linear-gradient(to bottom right, #F9FFFD, #A8C64E);
+      background-image: radial-gradient(white, white);
       /*background-image: url(retro-seamless-pattern-in-the-style-of-the-70s-and-60s-vector.jpg);*/
       background-size: 100%;
       background-repeat: repeat;
     }
-      /*background-color: #b4c7a5;*/
-
-    /*.progress-bar {
-      margin: 30px auto 0 auto; // top 30px, bottom 0, centered 
-      min-width: 100px;
-      max-width: 400px;
-      text-align: center;
-    }*/
 
     .background-overlay {
       position: absolute;
@@ -32,9 +26,9 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 1000px; /* Adjust as needed */
-      opacity: 0.75; /* Controls transparency */
+      opacity: 1.00; /* Controls transparency */
       pointer-events: none; /* Clicks pass through the image */
-      z-index: 6;
+      z-index: -1;
     }
 
     h1 {
@@ -52,11 +46,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 375px; /* Adjust size as needed */
+      width: 350px; /* Adjust size as needed */
       height: 275px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      margin-top: 10px;
+      /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       /*box-shadow:  -2px -2px 0 #d2d4d2, 2px 2px 0 #29381c;*/
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
       
     }
 
@@ -68,7 +64,7 @@
       color: white;
       width: 300px;
       height: 30px;
-      background-color: #394d27;
+      background-color: #000000;
       border: 2px solid #909190;
       border-radius: 8px;
       box-shadow: inset -2px -2px 0 #d2d4d2, inset 2px 2px 0 #29381c;
@@ -87,8 +83,8 @@
       height: 100%;
       background: repeating-linear-gradient(
         90deg,
-        #1f1d1d 0 10px,
-        #394d27 6px 15px
+        #394d27 0 10px,
+        #1f1d1d 6px 15px
       );
       border-top-left-radius: 5px;
       animation: drain 10s linear forwards;
@@ -132,9 +128,9 @@
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       /*position: absolute;*/
       /*transform: translate(-50%, -50%);*/
-      margin-top: 20px;
-      margin-left: 10px;
-      margin-right: 10px;
+      margin-top: 10px;
+      margin-left: 15px;
+      margin-right: 15px;
       border-radius: 100em;
       background-color: rgba(0, 0, 0, 0.75);
       box-shadow: -0.15em -0.15em 0.15em -0.15em rgba(5, 5, 5, 0.25),
@@ -238,7 +234,7 @@
                 rgba(25, 25, 25, 1),
                 rgba(75, 75, 75, 1));
         /*-webkit-background-clip: text;*/
-        /*background-clip: text;*/
+        background-clip: text;
         transition: transform 250ms ease;
         display: block;
         will-change: transform;
@@ -258,7 +254,7 @@
   </style>
 </head>
 <body>
-  <img src="Untitled_Artwork(1).PNG" alt="Overlay" class="background-overlay">
+  <img src="Untitled_Artwork.jpg" alt="Overlay" class="background-overlay">
 
   <h1>4rd Ali</h1>
   
@@ -278,28 +274,35 @@
   <div class="vintage-fill" id="fillBarSeberazvitie" style="width: 0%;">Mood</div>
   </div>
   
-  <img src="rat-eats-mm-rat.gif" alt="Example Image" class="a">
+  <img src="rat-eats-mm-rat.gif" alt="Ali as a mouse" class="a">
 
   <div class="container">
     <button class="pos-1" onclick="increaseBarHunger()">
-      <div class="button-outer"><div class="button-inner"><span>Eat</span></div></div>
+      <div class="button-outer"><div class="button-inner"><span></span></div></div>
     </button>
 
     <button class="pos-2" onclick="increaseBarEnergy()" onclick="decreaseBarHunger()">
-      <div class="button-outer"><div class="button-inner"><span>Sleep</span></div></div>
+      <div class="button-outer"><div class="button-inner"><span></span></div></div>
     </button>
 
     <button class="pos-3" onclick="increaseBarMood()">
-      <div class="button-outer"><div class="button-inner"><span>Work</span></div></div>
+      <div class="button-outer"><div class="button-inner"><span></span></div></div>
     </button>
 
     <button class="pos-4" onclick="increaseBarSeberazvitie()">
-      <div class="button-outer"><div class="button-inner"><span>Slay</span></div></div>
+      <div class="button-outer"><div class="button-inner"><span></span></div></div>
     </button>
   </div>
 
+  <button class="mouse-button" onclick="krilataFrazaPopUp()">
+    <div class="wrap">
+      <div class="bubble" id="myPopup">CSS Speech Bubble</div>
+    </div>
+  </button>
 
 
+  
+  
   <script>
     let counterHunger = 0;
     let counterEnergy = 0;
@@ -419,7 +422,40 @@
         }
       }, 5000); // decrease every 3 seconds
     }
+
+
+    function krilataFrazaPopUp(){
+      //popup krilata fraza
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+
+
+
+    /*  <script type="module"> //uncomment and put after </scrip to make the glowing cursor appear
+    import { neonCursor } from 'https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js';
+
+    // initialize the neon cursor
+    neonCursor({
+      el: document.getElementById('app'),
+      shaderPoints: 16,
+      curvePoints: 80,
+      curveLerp: 0.5,
+      radius1: 5,
+      radius2: 30,
+      velocityTreshold: 10,
+      sleepRadiusX: 100,
+      sleepRadiusY: 100,
+      sleepTimeCoefX: 0.0025,
+      sleepTimeCoefY: 0.0025
+    });
+ */
+
   </script>
+
+  
+
+
 
 </body>
 </html>
