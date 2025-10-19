@@ -109,9 +109,3 @@
     0 1rem 1rem -0.6rem rgba(0, 0, 0, 0.8);
 }
 
-.bubble {
-  position: absolute;
-  top: -140px; /* adjust above button */
-  left: 50%;
-  transform: translateX(-50%);
-}

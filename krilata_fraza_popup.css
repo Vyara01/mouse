@@ -1,5 +1,6 @@
 .bubble {
     position: absolute;
+    left: 60%;
     background: #000000;
     color: #FFFFFF;
     font-family: Arial;
@@ -11,6 +12,8 @@
     height: 120px;
     border-radius: 10px;
     padding: 0px;
+    display: none;
+    z-index: 999;
 
 }
 .bubble:after {
@@ -18,7 +21,7 @@
     position: absolute;
     display: block;
     width: 0;
-    z-index: 1;
+    
     border-style: solid;
     border-width: 20px 20px 0 0;
     border-color: #000000 transparent transparent transparent;
@@ -29,3 +32,5 @@
 .bubble.show {
   display: block;
 }
+
+
